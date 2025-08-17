@@ -16,7 +16,7 @@ class AdvancedPaymentReminderSystem {
         this.payUGatewayUrl = 'https://u.payu.in/aI2M9cqc5ui6'; // PayU Gateway URL
         this.currentLanguage = 'hinglish'; // Default language
         this.chatMessages = []; // Store chat messages
-        this.geminiApiKey = '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'; // Gemini API key
+        this.geminiApiKey = 'YOUR_HUGGING_FACE_API_KEY_HERE'; // Replace with your actual Hugging Face API key
         this.isVickyLoggedIn = false; // Track if Vicky is logged in
         this.accountGeneratedDate = new Date('2025-02-01'); // Account generated in February
         this.paymentDueDate = new Date('2025-08-04'); // Payment was due on 4th August
@@ -1184,7 +1184,7 @@ function toggleAIChat() {
 // Gemini AI Integration
 async function getGeminiResponse(userMessage) {
     try {
-        const apiKey = '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';
+        const apiKey = 'YOUR_HUGGING_FACE_API_KEY_HERE'; // Replace with your actual API key
         const apiUrl = 'https://api-inference.huggingface.co/models/google/gemma-2b-it';
         
         const context = `You are Vicky Kumar, an AI lending agent. Customer Amit Arya owes ₹32,272 (discounted from ₹34,188). Payment was due August 30, next deadline September 4. Respond in Hinglish (Hindi-English mix) naturally. Be helpful but urgent about payment.`;

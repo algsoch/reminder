@@ -92,14 +92,31 @@ An advanced, AI-powered payment reminder system with intelligent chatbot capabil
 ### **For Developers:**
 ```bash
 # Clone the repository
-git clone https://github.com/algsoch/insurance.git
+git clone https://github.com/yourusername/credit-card-payment-reminder.git
 
 # Navigate to directory
-cd insurance
+cd credit-card-payment-reminder
 
 # Open index.html in browser
 start index.html
 ```
+
+### **🔧 API Configuration:**
+1. **Get Hugging Face API Key:**
+   - Visit [Hugging Face Settings](https://huggingface.co/settings/tokens)
+   - Create a new token with read permissions
+   - Copy the token
+
+2. **Update API Key in script.js:**
+   ```javascript
+   this.geminiApiKey = 'YOUR_HUGGING_FACE_API_KEY_HERE';
+   ```
+   Replace `YOUR_HUGGING_FACE_API_KEY_HERE` with your actual API key
+
+3. **Environment Variables (Production):**
+   - Copy `.env.example` to `.env`
+   - Add your API keys to environment variables
+   - Use environment variables in production deployments
 
 ---
 
