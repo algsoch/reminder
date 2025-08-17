@@ -506,39 +506,39 @@ Emergency? Call immediately! 📞`
 
     addAIChatInterface() {
         const chatInterface = document.createElement('div');
-        chatInterface.className = 'ai-chat-interface';
-        chatInterface.innerHTML = `
-            <div class="ai-chat-header">
-                <i class="fas fa-robot"></i>
-                <span>Vicky Kumar (Live AI Agent)</span>
-                <div class="chat-status">
-                    <span class="status-dot online"></span>
-                    <span>Online</span>
-                </div>
-                <button class="chat-toggle" onclick="toggleAIChat()">
-                    <i class="fas fa-comment-dots"></i>
-                </button>
-            </div>
-            <div class="ai-chat-body" id="aiChatBody">
-                <div class="ai-message">
-                    <img src="vicky_upi.jpg" alt="Vicky Kumar" class="vicky-image" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; border: 3px solid #4CAF50;">
-                    <div><strong>Vicky:</strong> Namaste Amit bhai! Special discount offer! ₹34,188 se ₹32,272! Save ₹1,916! September 4 deadline! 💰🚨</div>
-                </div>
-                <div class="ai-message typing" id="initialMessage" style="display: none;">
-                    <div class="typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <div class="ai-chat-input">
-                <input type="text" id="aiChatInput" placeholder="Ask Vicky about payment..." onkeypress="handleChatEnter(event)">
-                <button onclick="sendAIMessage()" id="sendBtn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        `;
+        // chatInterface.className = 'ai-chat-interface';
+        // chatInterface.innerHTML = `
+        //     <div class="ai-chat-header">
+        //         <i class="fas fa-robot"></i>
+        //         <span>Vicky Kumar (Live AI Agent)</span>
+        //         <div class="chat-status">
+        //             <span class="status-dot online"></span>
+        //             <span>Online</span>
+        //         </div>
+        //         <button class="chat-toggle" onclick="toggleAIChat()">
+        //             <i class="fas fa-comment-dots"></i>
+        //         </button>
+        //     </div>
+        //     <div class="ai-chat-body" id="aiChatBody">
+        //         <div class="ai-message">
+        //             <img src="vicky_upi.jpg" alt="Vicky Kumar" class="vicky-image" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; border: 3px solid #4CAF50;">
+        //             <div><strong>Vicky:</strong> Namaste Amit bhai! Special discount offer! ₹34,188 se ₹32,272! Save ₹1,916! September 4 deadline! 💰🚨</div>
+        //         </div>
+        //         <div class="ai-message typing" id="initialMessage" style="display: none;">
+        //             <div class="typing-indicator">
+        //                 <span></span>
+        //                 <span></span>
+        //                 <span></span>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div class="ai-chat-input">
+        //         <input type="text" id="aiChatInput" placeholder="Ask Vicky about payment..." onkeypress="handleChatEnter(event)">
+        //         <button onclick="sendAIMessage()" id="sendBtn">
+        //             <i class="fas fa-paper-plane"></i>
+        //         </button>
+        //     </div>
+        // `;
         
         document.body.appendChild(chatInterface);
         
