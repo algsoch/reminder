@@ -1,0 +1,119 @@
+{
+  "customerInfo": {
+    "name": "Amit Arya",
+    "fatherName": "Harish Chander",
+    "accountId": "AA-2025-001",
+    "contactNumber": "+91-XXXXX-XXXXX",
+    "email": "amit.arya@example.com"
+  },
+  "paymentDetails": {
+    "originalAmount": 26000,
+    "currentAmount": 32272,
+    "originalDueDate": "2025-05-30",
+    "currentDueDate": "2025-08-30",
+    "currency": "INR",
+    "monthlyInterestRate": 5
+  },
+  "charges": {
+    "monthlyInterest": 1300,
+    "lateFee": 1100,
+    "gstOnLateFee": 198,
+    "igstOnFinanceCharges": 311.74,
+    "additionalInterest": 3362.26
+  },
+  "paymentMethods": {
+    "upi": {
+      "enabled": true,
+      "qrCodeImage": "vicky_upi.jpg",
+      "recipientName": "Vicky Kumar",
+      "upiId": "vicky@phonepe"
+    },
+    "card": {
+      "enabled": true,
+      "acceptedCards": ["Visa", "Mastercard", "RuPay"]
+    },
+    "netBanking": {
+      "enabled": true,
+      "supportedBanks": ["SBI", "HDFC", "ICICI", "Axis"]
+    },
+    "cash": {
+      "enabled": true,
+      "note": "Contact for cash payment arrangements"
+    }
+  },
+  "notifications": {
+    "urgencyLevels": {
+      "green": {
+        "daysThreshold": 7,
+        "message": "Payment due soon",
+        "color": "#4ade80"
+      },
+      "yellow": {
+        "daysThreshold": 3,
+        "message": "Payment required urgently!",
+        "color": "#f39c12"
+      },
+      "red": {
+        "daysThreshold": 1,
+        "message": "CRITICAL: Payment due today!",
+        "color": "#ff6b6b"
+      },
+      "overdue": {
+        "message": "PAYMENT OVERDUE!",
+        "color": "#ff1744"
+      }
+    },
+    "reminders": {
+      "email": true,
+      "sms": false,
+      "whatsapp": true
+    }
+  },
+  "theme": {
+    "primaryColor": "#667eea",
+    "secondaryColor": "#764ba2",
+    "successColor": "#4ade80",
+    "warningColor": "#f39c12",
+    "dangerColor": "#ff6b6b",
+    "backgroundGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  },
+  "features": {
+    "animations": {
+      "enabled": true,
+      "reducedMotion": false,
+      "duration": "normal"
+    },
+    "countdown": {
+      "enabled": true,
+      "showSeconds": true,
+      "urgencyBar": true
+    },
+    "breakdown": {
+      "showDetailed": true,
+      "animateNumbers": true,
+      "expandable": false
+    },
+    "paymentModal": {
+      "enabled": true,
+      "allowPartialPayments": true,
+      "requireNotes": false
+    }
+  },
+  "support": {
+    "contactNumber": "+91-XXXXX-XXXXX",
+    "email": "support@lender.com",
+    "whatsapp": "+91-XXXXX-XXXXX",
+    "workingHours": "9 AM - 6 PM",
+    "emergencyContact": "+91-XXXXX-XXXXX"
+  },
+  "legal": {
+    "companyName": "Your Lending Company",
+    "address": "Your Company Address",
+    "registrationNumber": "REG123456789",
+    "gstNumber": "GST123456789",
+    "terms": "Terms and conditions apply",
+    "privacy": "Privacy policy available on request"
+  },
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-18"
+}
