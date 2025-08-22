@@ -1,0 +1,2480 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: containerShimmer 3s infinite;
+}
+
+@keyframes containerShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Header Styles */
+.invoice-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 300% 300%;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin: -20px -20px 30px -20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.header-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: headerShimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes headerShimmer {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+}
+
+.header-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 60%; left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 30%; left: 80%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 40%; left: 90%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+    }
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.logo-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon-container i {
+    font-size: 3.5rem;
+    color: #ffd700;
+    position: relative;
+    z-index: 2;
+    animation: iconRotate 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes iconRotate {
+    0%, 100% { transform: rotateY(0deg) scale(1); }
+    25% { transform: rotateY(15deg) scale(1.1); }
+    75% { transform: rotateY(-15deg) scale(1.1); }
+}
+
+.icon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.8;
+    }
+}
+
+.logo-text h1 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bank-name {
+    display: block;
+    color: #ffd700;
+    font-size: 1.2em;
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.3); }
+    50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.6); }
+}
+
+.card-text {
+    display: block;
+    font-size: 0.8em;
+    color: #ffffff;
+    margin: 2px 0;
+}
+
+.reminder-text {
+    display: block;
+    font-size: 0.7em;
+    color: #e8e8e8;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    margin: 8px 0 0 0;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-weight: 500;
+}
+
+.subtitle i {
+    color: #4facfe;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.security-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { 
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1);
+    }
+    50% { 
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+}
+
+.invoice-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: right;
+    animation: slideInRight 1s ease-out 0.3s both;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    min-width: 280px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.meta-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.meta-item.urgent {
+    border-left: 4px solid #ff6b6b;
+    animation: urgentPulse 2s ease-in-out infinite;
+}
+
+@keyframes urgentPulse {
+    0%, 100% { border-left-color: #ff6b6b; }
+    50% { border-left-color: #ff4757; }
+}
+
+.meta-item.critical {
+    border-left: 4px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    animation: criticalGlow 3s ease-in-out infinite;
+}
+
+@keyframes criticalGlow {
+    0%, 100% { 
+        background: rgba(255, 215, 0, 0.1);
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+    50% { 
+        background: rgba(255, 215, 0, 0.2);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+}
+
+.meta-item .label {
+    font-weight: 500;
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+.meta-item .label i {
+    color: #4facfe;
+    font-size: 1.1em;
+}
+
+.meta-item .value {
+    font-weight: 700;
+    color: white;
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.due-date {
+    color: #ffd700 !important;
+    font-weight: 800 !important;
+    animation: dueDatePulse 2s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+}
+
+@keyframes dueDatePulse {
+    0%, 100% { 
+        transform: scale(1);
+        color: #ffd700;
+    }
+    50% { 
+        transform: scale(1.05);
+        color: #ffed4e;
+    }
+}
+
+/* Alert Styles */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.overdue-alert {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    border-left: 4px solid #c44569;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Invoice Details */
+.invoice-details {
+    margin-bottom: 30px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.detail-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.detail-card h3 i {
+    color: #667eea;
+}
+
+.detail-content p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Loan Summary */
+.loan-summary {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.loan-summary::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: sectionGlow 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sectionGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loan-summary h2 {
+    color: white;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.loan-summary h2 i {
+    color: #ffd700;
+    font-size: 1.8rem;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.summary-item {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.summary-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.summary-item:hover::before {
+    left: 100%;
+}
+
+.summary-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 1);
+}
+
+.summary-item .label {
+    display: block;
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-item .value {
+    display: block;
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.2;
+}
+
+/* Transaction Section */
+.transaction-section {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(79, 172, 254, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: sectionGlow 15s linear infinite reverse;
+    pointer-events: none;
+}
+
+.transaction-section h2 {
+    color: white;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.transaction-section h2 i {
+    color: #ffd700;
+    font-size: 1.8rem;
+    animation: iconBounce 3s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-5px) scale(1.1); }
+    75% { transform: translateY(2px) scale(0.95); }
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    margin: 0 -5px;
+}
+
+.transaction-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.transaction-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 18px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transaction-table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.transaction-table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.transaction-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    position: relative;
+}
+
+.transaction-table tbody tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.transaction-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+}
+
+.transaction-table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.payment-made {
+    color: #27ae60;
+    font-weight: 700;
+    position: relative;
+}
+
+.payment-made::before {
+    content: '✅';
+    margin-right: 5px;
+}
+
+.balance-amount {
+    font-weight: 700;
+    color: #e74c3c;
+    position: relative;
+}
+
+.balance-amount::before {
+    content: '💳';
+    margin-right: 5px;
+}
+
+/* Payment Deadline Timer Section */
+.deadline-timer-section {
+    margin-bottom: 30px;
+    padding: 30px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 50%, #ff4757 100%);
+    background-size: 300% 300%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: urgentGradient 4s ease-in-out infinite;
+}
+
+@keyframes urgentGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.deadline-timer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: timerShimmer 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes timerShimmer {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+}
+
+.timer-container {
+    position: relative;
+    z-index: 2;
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.timer-header h3 {
+    color: white;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+.timer-header h3 i {
+    color: #ffd700;
+    font-size: 1.5em;
+    animation: clockTick 1s ease-in-out infinite;
+}
+
+@keyframes clockTick {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+}
+
+.urgency-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+@keyframes urgencyPulse {
+    0%, 100% { 
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.2);
+    }
+    50% { 
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.urgency-indicator i {
+    color: #ffd700;
+    font-size: 1.2rem;
+    animation: urgencyBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes urgencyBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.urgency-indicator span {
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    min-width: 80px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-number {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: numberPulse 1s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.countdown-label {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: #f0f0f0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.countdown-separator {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: white;
+    font-weight: 900;
+    animation: separatorBlink 2s ease-in-out infinite;
+}
+
+@keyframes separatorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.progress-bar-container {
+    margin-bottom: 25px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.progress-bar {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    border-radius: 25px;
+    transition: width 1s ease-in-out;
+    position: relative;
+    animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    animation: progressShine 3s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.deadline-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.deadline-date,
+.current-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex: 1;
+    min-width: 250px;
+}
+
+.deadline-date i,
+.current-time i {
+    color: #ffd700;
+    font-size: 1.1em;
+}
+
+.deadline-date strong {
+    color: #ffd700;
+    font-weight: 700;
+}
+
+#currentTime {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #ffd700;
+}
+
+/* Payment Breakdown */
+.payment-breakdown {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-breakdown::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: sectionGlow 12s linear infinite;
+    pointer-events: none;
+}
+
+.payment-breakdown h2 {
+    color: white;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.payment-breakdown h2 i {
+    color: #ffd700;
+    font-size: 1.8rem;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.breakdown-table {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.breakdown-row::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    right: -25px;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.breakdown-row:hover::before {
+    opacity: 1;
+}
+
+.breakdown-row:hover {
+    transform: translateX(5px);
+}
+
+.breakdown-row:last-child {
+    border-bottom: none;
+}
+
+.breakdown-row .label {
+    font-weight: 500;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.breakdown-row .label::before {
+    content: '💰';
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.breakdown-row.subtotal .label::before {
+    content: '📊';
+}
+
+.breakdown-row.discount .label::before {
+    content: '🎉';
+}
+
+.breakdown-row.total .label::before {
+    content: '🏆';
+}
+
+.breakdown-row .value {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+    text-align: right;
+}
+
+.breakdown-row.subtotal {
+    border-top: 2px solid #ddd;
+    margin-top: 10px;
+    padding-top: 18px;
+    font-weight: 600;
+    background: rgba(102, 126, 234, 0.05);
+    margin-left: -25px;
+    margin-right: -25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 8px;
+}
+
+.breakdown-row.discount .value {
+    color: #27ae60;
+    font-weight: 700;
+    animation: discountPulse 2s ease-in-out infinite;
+}
+
+@keyframes discountPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.breakdown-row.total {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 25px;
+    margin: 20px -25px -25px -25px;
+    border-radius: 0 0 12px 12px;
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(238, 90, 82, 0.3);
+    animation: totalPulse 3s ease-in-out infinite;
+}
+
+@keyframes totalPulse {
+    0%, 100% { 
+        box-shadow: 0 8px 20px rgba(238, 90, 82, 0.3);
+        transform: translateY(0);
+    }
+    50% { 
+        box-shadow: 0 12px 30px rgba(238, 90, 82, 0.5);
+        transform: translateY(-2px);
+    }
+}
+
+.final-due {
+    animation: highlightAmount 3s ease-in-out infinite;
+}
+
+@keyframes highlightAmount {
+    0%, 100% { color: inherit; }
+    50% { color: #ffd700; }
+}
+
+/* Payment Section */
+.payment-section {
+    margin-bottom: 30px;
+}
+
+.payment-section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.payment-section h2 i {
+    color: #e74c3c;
+}
+
+.payment-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: start;
+}
+
+.payment-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.upi-details, .qr-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+}
+
+.upi-details h3, .qr-section h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.upi-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.upi-id i {
+    color: #667eea;
+}
+
+.copy-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #5a6fd8;
+}
+
+.qr-container {
+    text-align: center;
+}
+
+.qr-code {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+.qr-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px;
+    color: #999;
+}
+
+.qr-error i {
+    font-size: 3rem;
+}
+
+.payment-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.pay-now-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.pay-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+    background: linear-gradient(135deg, #229954, #27ae60);
+}
+
+.payment-note {
+    text-align: center;
+    color: #e74c3c;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Footer */
+.invoice-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.invoice-footer p {
+    margin-bottom: 5px;
+}
+
+.invoice-footer i {
+    color: #27ae60;
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .invoice-meta {
+        text-align: center;
+    }
+    
+    .details-grid,
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .transaction-table {
+        font-size: 0.85rem;
+    }
+    
+    .transaction-table th,
+    .transaction-table td {
+        padding: 8px 5px;
+    }
+    
+    .logo-section h1 {
+        font-size: 1.5rem;
+    }
+    
+    .pay-now-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .meta-item {
+        min-width: auto;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    
+    .breakdown-row {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    .upi-id {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .payment-note {
+        text-align: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Enhanced HDFC Credit Card Invoice Styles */
+.subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.penalty-warning {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+    border: 1px solid #ffb3b3;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.1);
+}
+
+.penalty-warning h3 {
+    color: #d32f2f;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.penalty-warning ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.penalty-warning li {
+    margin: 8px 0;
+    color: #333;
+}
+
+.penalty-warning li strong {
+    color: #d32f2f;
+    font-weight: 600;
+}
+
+/* Enhanced table styles for HDFC */
+.transaction-table th:nth-child(3),
+.transaction-table td:nth-child(3) {
+    text-align: center;
+}
+
+.no-payment {
+    color: #d32f2f !important;
+    font-weight: 500;
+}
+
+.payment-made {
+    color: #2e7d32 !important;
+    font-weight: 500;
+}
+
+/* Additional discount styling */
+.discount-amount {
+    color: #2e7d32 !important;
+    font-weight: 600;
+}
+
+/* Overdue alert hidden by default */
+.overdue-alert {
+    display: none;
+}
+
+/* Advanced Animations and Effects */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(40, 167, 69, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes rotateCard {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Enhanced Container Animations */
+.container {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.invoice-header {
+    animation: slideInFromTop 1s ease-out;
+}
+
+.detail-card, .summary-item, .breakdown-row {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.detail-card:nth-child(1) { animation-delay: 0.1s; }
+.detail-card:nth-child(2) { animation-delay: 0.2s; }
+
+.summary-item:nth-child(1) { animation-delay: 0.1s; }
+.summary-item:nth-child(2) { animation-delay: 0.2s; }
+.summary-item:nth-child(3) { animation-delay: 0.3s; }
+.summary-item:nth-child(4) { animation-delay: 0.4s; }
+.summary-item:nth-child(5) { animation-delay: 0.5s; }
+.summary-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Enhanced Button Animations */
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+}
+
+.btn-primary:hover {
+    animation: pulseGlow 1.5s infinite;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0px) scale(0.98);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Payment Processing Animation */
+.payment-processing {
+    animation: bounce 0.6s ease infinite;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24, #ff6b6b, #ee5a24);
+    background-size: 300% 300%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Enhanced Table Animations */
+.transaction-table tbody tr {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.transaction-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.transaction-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.transaction-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.transaction-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.transaction-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+.transaction-table tbody tr:nth-child(6) { animation-delay: 0.6s; }
+
+.transaction-table tbody tr:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* Enhanced Card Hover Effects */
+.detail-card:hover {
+    transform: translateY(-5px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.summary-item:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* QR Code Animation */
+.qr-code {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.qr-code:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Advanced Notification Styles */
+.advanced-notification {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification-content i {
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+/* Enhanced Final Amount Animation */
+.total-amount {
+    animation: pulseGlow 2s infinite;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite, pulseGlow 2s infinite;
+}
+
+/* Floating Elements */
+.invoice-header::before {
+    content: '💳';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    opacity: 0.6;
+}
+
+/* Advanced Gradient Backgrounds */
+.loan-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 200% 200%;
+    animation: shimmer 8s ease-in-out infinite;
+}
+
+.payment-breakdown {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-size: 200% 200%;
+    animation: shimmer 10s ease-in-out infinite;
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+    .detail-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .btn-primary:hover {
+        animation: none;
+        transform: none;
+    }
+}
+
+/* Comprehensive Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .invoice-header {
+        padding: 25px 20px;
+        margin: -15px -15px 25px -15px;
+    }
+}
+
+@media (max-width: 968px) {
+    .header-content {
+        display: block;
+        text-align: center;
+    }
+    
+    .logo-section {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .invoice-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .transaction-table {
+        min-width: 800px;
+        font-size: 0.85rem;
+    }
+    
+    .transaction-table th,
+    .transaction-table td {
+        padding: 8px 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 12px;
+        border-radius: 15px;
+    }
+    
+    .invoice-header {
+        padding: 25px 15px;
+        margin: -12px -12px 20px -12px;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .logo-icon-container i {
+        font-size: 3rem;
+    }
+
+    .logo-text h1 {
+        font-size: clamp(1.3rem, 6vw, 1.8rem);
+        text-align: center;
+    }
+
+    .bank-name {
+        font-size: 1.1em;
+    }
+
+    .card-text {
+        font-size: 0.75em;
+    }
+
+    .reminder-text {
+        font-size: 0.65em;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        justify-content: center;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .security-badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    .invoice-meta {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .meta-item {
+        min-width: auto;
+        max-width: 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+        padding: 10px 15px;
+    }
+
+    .meta-item .label {
+        font-size: 0.8rem;
+        justify-content: center;
+    }
+
+    .meta-item .value {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .logo-section h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    .logo-section i {
+        font-size: 2rem;
+    }
+    
+    .invoice-meta {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .meta-item {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .summary-item {
+        padding: 18px 15px;
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: 85px;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .summary-item:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .summary-item .label {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+        color: #666;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .summary-item .value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #2c3e50;
+        line-height: 1.1;
+    }
+    
+    .payment-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .payment-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .qr-code {
+        max-width: 200px;
+        height: auto;
+    }
+    
+    .breakdown-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        margin: 8px -25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .breakdown-row .label,
+    .breakdown-row .value {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .breakdown-row .label {
+        margin-bottom: 4px;
+        color: #666;
+    }
+
+    .breakdown-row .value {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    .breakdown-row.total {
+        margin: 15px -25px -25px -25px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .breakdown-row.total .label,
+    .breakdown-row.total .value {
+        font-size: 1.1rem;
+    }
+
+    /* Enhanced Transaction Section Mobile */
+    .transaction-section {
+        padding: 20px 15px;
+    }
+
+    .transaction-section h2 {
+        font-size: 1.2rem;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        margin: 0 -15px;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .transaction-table {
+        min-width: 700px;
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .transaction-table th {
+        padding: 12px 6px;
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+
+    .transaction-table td {
+        padding: 10px 6px;
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    /* Enhanced Payment Breakdown Mobile */
+    .payment-breakdown {
+        padding: 20px 15px;
+    }
+
+    .payment-breakdown h2 {
+        font-size: 1.2rem;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .breakdown-table {
+        padding: 20px 15px;
+        margin: 0 -5px;
+    }
+
+    /* Enhanced Timer Section Mobile */
+    .deadline-timer-section {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+    }
+
+    .timer-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .timer-header h3 {
+        font-size: 1.2rem;
+        justify-content: center;
+    }
+
+    .urgency-indicator {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .countdown-display {
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+        padding: 15px 8px;
+    }
+
+    .countdown-number {
+        font-size: 1.8rem;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    .countdown-separator {
+        font-size: 1.2rem;
+    }
+
+    .deadline-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .deadline-date,
+    .current-time {
+        min-width: auto;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+    
+    .penalty-warning {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    
+    .penalty-warning h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .penalty-warning ul {
+        padding-left: 15px;
+    }
+    
+    .penalty-warning li {
+        font-size: 0.9rem;
+        margin: 6px 0;
+    }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 480px) {
+    .container {
+        margin: 5px;
+        padding: 10px;
+    }
+    
+    .invoice-header {
+        padding: 20px 10px;
+        margin: -10px -10px 15px -10px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .header-particles .particle {
+        display: none; /* Hide particles on very small screens */
+    }
+
+    .logo-icon-container i {
+        font-size: 2.5rem;
+    }
+
+    .icon-glow {
+        width: 60px;
+        height: 60px;
+    }
+
+    .logo-text h1 {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+    }
+
+    .bank-name {
+        font-size: 1em;
+    }
+
+    .card-text {
+        font-size: 0.7em;
+        margin: 1px 0;
+    }
+
+    .reminder-text {
+        font-size: 0.6em;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+
+    .security-badge {
+        font-size: 0.65rem;
+        padding: 2px 5px;
+    }
+
+    .meta-item {
+        padding: 8px 10px;
+        gap: 3px;
+    }
+
+    .meta-item .label {
+        font-size: 0.75rem;
+    }
+
+    .meta-item .label i {
+        font-size: 0.9em;
+    }
+
+    .meta-item .value {
+        font-size: 0.8rem;
+    }
+    
+    .logo-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo-section h1 {
+        font-size: 1.3rem;
+        line-height: 1.1;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .meta-item {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Enhanced Transaction Section for Small Mobile */
+    .transaction-section {
+        padding: 15px 10px;
+        margin-bottom: 20px;
+    }
+
+    .transaction-section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .table-container {
+        margin: 0 -10px;
+    }
+
+    .transaction-table {
+        min-width: 650px;
+        font-size: 0.7rem;
+    }
+
+    .transaction-table th {
+        padding: 10px 4px;
+        font-size: 0.65rem;
+    }
+
+    .transaction-table td {
+        padding: 8px 4px;
+        font-size: 0.7rem;
+    }
+
+    /* Enhanced Payment Breakdown for Small Mobile */
+    .payment-breakdown {
+        padding: 15px 10px;
+        margin-bottom: 20px;
+    }
+
+    .payment-breakdown h2 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .breakdown-table {
+        padding: 15px 10px;
+    }
+
+    .breakdown-row {
+        padding: 10px;
+        margin: 6px -10px;
+        gap: 6px;
+    }
+
+    .breakdown-row .label,
+    .breakdown-row .value {
+        font-size: 0.85rem;
+    }
+
+    .breakdown-row.total {
+        margin: 12px -10px -15px -10px;
+        padding: 18px 10px;
+    }
+
+    .breakdown-row.total .label,
+    .breakdown-row.total .value {
+        font-size: 1rem;
+    }
+    
+    .detail-card,
+    .summary-item {
+        padding: 10px 12px;
+    }
+    
+    .detail-card h3,
+    .loan-summary h2,
+    .payment-breakdown h2,
+    .transaction-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .transaction-table {
+        font-size: 0.75rem;
+        min-width: 700px;
+    }
+    
+    .transaction-table th,
+    .transaction-table td {
+        padding: 6px 4px;
+    }
+    
+    .payment-amount h3 {
+        font-size: 1.5rem;
+    }
+    
+    .amount-highlight {
+        font-size: 1.8rem;
+    }
+    
+    .advanced-notification {
+        right: 10px;
+        left: 10px;
+        top: 10px;
+        font-size: 0.9rem;
+        padding: 12px 15px;
+    }
+}
+
+/* Dynamic Floating Elements */
+@keyframes floatingIcon1 {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.6;
+    }
+    25% { 
+        transform: translateY(-15px) rotate(90deg);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-10px) rotate(180deg);
+        opacity: 1;
+    }
+    75% { 
+        transform: translateY(-20px) rotate(270deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes floatingIcon2 {
+    0%, 100% { 
+        transform: translateX(0px) scale(1);
+        opacity: 0.4;
+    }
+    33% { 
+        transform: translateX(10px) scale(1.1);
+        opacity: 0.7;
+    }
+    66% { 
+        transform: translateX(-5px) scale(0.9);
+        opacity: 0.6;
+    }
+}
+
+/* Floating background elements */
+body::before {
+    content: '💳';
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    font-size: 3rem;
+    opacity: 0.1;
+    animation: floatingIcon1 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+body::after {
+    content: '💰';
+    position: fixed;
+    bottom: 15%;
+    right: 8%;
+    font-size: 2.5rem;
+    opacity: 0.1;
+    animation: floatingIcon2 6s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Advanced Text Effects */
+.animated-text {
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGradient 4s ease infinite;
+}
+
+@keyframes textGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Enhanced Loading States */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Dynamic Scroll Effects */
+@keyframes scrollFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animate {
+    animation: scrollFadeIn 0.6s ease-out forwards;
+}
+
+/* Glowing Effects */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(102, 126, 234, 0.8), 0 0 35px rgba(102, 126, 234, 0.6);
+    }
+}
+
+.glow-effect {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Interactive Hover States */
+.interactive-element {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.interactive-element:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Particle Effect Background */
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100px) translateX(50px) rotate(180deg);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(102, 126, 234, 0.6);
+    border-radius: 50%;
+    animation: particleFloat 6s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+
+/* Touch-friendly interactions for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .detail-card:hover,
+    .summary-item:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none;
+        filter: none;
+        animation: none;
+    }
+    
+    .detail-card:active,
+    .summary-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+
+    /* Enhanced Timer Section for Small Mobile */
+    .deadline-timer-section {
+        padding: 15px 8px;
+        margin-bottom: 20px;
+    }
+
+    .timer-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .urgency-indicator {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+
+    .countdown-display {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .countdown-item {
+        min-width: 50px;
+        padding: 12px 6px;
+    }
+
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.65rem;
+    }
+
+    .countdown-separator {
+        font-size: 1rem;
+    }
+
+    .deadline-date,
+    .current-time {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+}

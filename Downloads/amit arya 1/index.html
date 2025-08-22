@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Reminder - Amit Arya (HDFC via CRED)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Invoice Header -->
+        <header class="invoice-header">
+            <div class="header-bg-animation"></div>
+            <div class="header-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon-container">
+                        <i class="fas fa-credit-card"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>
+                            <span class="bank-name">HDFC</span>
+                            <span class="card-text">CREDIT CARD</span>
+                            <span class="reminder-text">PAYMENT REMINDER</span>
+                        </h1>
+                        <p class="subtitle">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>via CRED Platform</span>
+                            <span class="security-badge">🔒 Secure Payment</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="invoice-meta">
+                    <div class="meta-item urgent">
+                        <span class="label"><i class="fas fa-file-invoice"></i> Invoice #:</span>
+                        <span class="value" id="invoiceNumber">HDFC-CRED-2025-001</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label"><i class="fas fa-calendar-plus"></i> Issue Date:</span>
+                        <span class="value" id="issueDate"></span>
+                    </div>
+                    <div class="meta-item critical">
+                        <span class="label"><i class="fas fa-exclamation-triangle"></i> Final Due Date:</span>
+                        <span class="value due-date">30th August 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label"><i class="fas fa-calendar-check"></i> Monthly Due:</span>
+                        <span class="value">4th of Every Month</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Payment Deadline Progress Timer -->
+        <section class="deadline-timer-section">
+            <div class="timer-container">
+                <div class="timer-header">
+                    <h3><i class="fas fa-clock"></i> Payment Deadline Progress</h3>
+                    <div class="urgency-indicator">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="urgencyText">URGENT</span>
+                    </div>
+                </div>
+                
+                <div class="countdown-display">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="daysCount">7</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hoursCount">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutesCount">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="secondsCount">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>Time Remaining</span>
+                        <span id="percentageRemaining">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                
+                <div class="deadline-info">
+                    <div class="deadline-date">
+                        <i class="fas fa-calendar-times"></i>
+                        <span>Final Deadline: <strong>29th August 2025, 11:59 PM</strong></span>
+                    </div>
+                    <div class="current-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Current Time: <span id="currentTime"></span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overdue Alert -->
+        <div class="alert overdue-alert" id="overdueAlert" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>PAYMENT OVERDUE! Additional charges apply after 30th August 2025.</span>
+        </div>
+
+        <!-- Invoice Details -->
+        <section class="invoice-details">
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3><i class="fas fa-user"></i> Borrower Information</h3>
+                    <div class="detail-content">
+                        <p><strong>Name:</strong> Amit Arya</p>
+                        <p><strong>Father's Name:</strong> Harish Chander</p>
+                        <p><strong>Card Type:</strong> HDFC Credit Card</p>
+                        <p><strong>Platform:</strong> CRED App</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3><i class="fas fa-handshake"></i> Lender Information</h3>
+                    <div class="detail-content">
+                        <p><strong>Name:</strong> Vicky Kumar</p>
+                        <p><strong>UPI ID:</strong> algimagine@ybl</p>
+                        <p><strong>Bank:</strong> HDFC Bank</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Summary -->
+        <section class="loan-summary">
+            <h2><i class="fas fa-money-bill-wave"></i> Credit Card Transaction Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="label">Principal Amount:</span>
+                    <span class="value">₹40,000</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Transaction Date:</span>
+                    <span class="value">February 2025</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">CRED Processing Fee:</span>
+                    <span class="value">₹3,500 (approx)</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Initial Outstanding:</span>
+                    <span class="value">₹43,500</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">HDFC Late Fee:</span>
+                    <span class="value">₹1,100/month</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Interest Rate:</span>
+                    <span class="value">5% monthly on outstanding</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction Table -->
+        <section class="transaction-section">
+            <h2><i class="fas fa-table"></i> Monthly Payment History & Charges</h2>
+            <div class="table-container">
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Due Date</th>
+                            <th>Payment Date</th>
+                            <th>Outstanding</th>
+                            <th>Late Fee</th>
+                            <th>Interest (5%)</th>
+                            <th>GST (18%)</th>
+                            <th>Payment Made</th>
+                            <th>New Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTableBody">
+                        <!-- Dynamic content will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Payment Breakdown -->
+        <section class="payment-breakdown">
+            <h2><i class="fas fa-calculator"></i> Final Payment Breakdown</h2>
+            <div class="breakdown-table">
+                <div class="breakdown-row">
+                    <span class="label">Principal + Processing Fee (Feb):</span>
+                    <span class="value">₹43,500</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="label">Total Payments Made:</span>
+                    <span class="value" id="totalPayments">₹26,000</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="label">Late Fees (Mar-Aug):</span>
+                    <span class="value" id="totalLateFees">₹0</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="label">Interest Charges:</span>
+                    <span class="value" id="totalInterest">₹0</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="label">GST (18% on fees):</span>
+                    <span class="value" id="totalGST">₹0</span>
+                </div>
+                <div class="breakdown-row subtotal">
+                    <span class="label">Subtotal Outstanding:</span>
+                    <span class="value" id="subtotalAmount">₹32,450.06</span>
+                </div>
+                <div class="breakdown-row discount">
+                    <span class="label">Special Discount Applied:</span>
+                    <span class="value discount-amount" id="discountAmount">-₹178.06</span>
+                </div>
+                <div class="breakdown-row total">
+                    <span class="label">FINAL AMOUNT DUE:</span>
+                    <span class="value total-amount" id="finalAmount">₹32,272</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Penalty Warning -->
+        <section class="penalty-warning" id="penaltyWarning">
+            <h3><i class="fas fa-exclamation-circle"></i> Post-Deadline Charges</h3>
+            <p><strong>If payment is not made by 30th August 2025:</strong></p>
+            <ul>
+                <li>Additional Late Fee: ₹1,100</li>
+                <li>Interest on ₹32,272: ₹1,613.60 (5%)</li>
+                <li>GST on charges: ₹488.47 (18%)</li>
+                <li><strong>Total September charge: ₹2,202.07</strong></li>
+            </ul>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <h2><i class="fas fa-credit-card"></i> Make Payment</h2>
+            <div class="payment-details">
+                <div class="payment-info">
+                    <div class="payment-amount">
+                        <h3>Pay Now: <span class="amount-highlight">₹32,272</span></h3>
+                        <p class="payment-deadline">Before 30th August 2025</p>
+                    </div>
+                    <div class="upi-details">
+                        <h4><i class="fas fa-mobile-alt"></i> UPI Payment Details</h4>
+                        <p><strong>UPI ID:</strong> <span class="upi-id">algimagine@ybl</span></p>
+                        <p><strong>Name:</strong> Vicky Kumar</p>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <h4><i class="fas fa-qrcode"></i> Scan QR Code</h4>
+                    <div class="qr-container">
+                        <img src="vicky_upi.jpg" alt="UPI QR Code" class="qr-code">
+                    </div>
+                </div>
+            </div>
+            <div class="payment-buttons">
+                <button class="btn-primary" onclick="initiatePayment()">
+                    <i class="fas fa-mobile-alt"></i> Pay via UPI
+                </button>
+                <button class="btn-secondary" onclick="copyUPI()">
+                    <i class="fas fa-copy"></i> Copy UPI ID
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="invoice-footer">
+            <p><i class="fas fa-info-circle"></i> For any queries, please contact the lender directly.</p>
+            <p><strong>Payment must be completed before 30th August 2025 to avoid additional charges.</strong></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
